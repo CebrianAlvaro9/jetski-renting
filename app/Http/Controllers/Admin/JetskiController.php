@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jetski;
 use Illuminate\Http\Request;
 
 class JetskiController extends Controller
@@ -13,7 +14,9 @@ class JetskiController extends Controller
     public function index()
     {
         //
-        return view('admin.jetskis.index');
+        $jetskis = Jetski::all();
+
+        return view('admin.jetskis.index',compact('jetskis'));
     }
 
     /**
@@ -43,9 +46,9 @@ class JetskiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Jetski $jetski)
     {
-        //
+        return view('admin.jetskis.edit', compact('jetski'));
     }
 
     /**

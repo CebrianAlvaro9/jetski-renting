@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\JetskiUser;
 use Illuminate\Http\Request;
 
 class JetskiUserController extends Controller
@@ -13,7 +14,10 @@ class JetskiUserController extends Controller
     public function index()
     {
         //
-        return view('admin.jetskisUsers.index');
+
+        $rents = JetskiUser::all();
+ 
+        return view('admin.jetskisUsers.index',compact('rents'));
     }
 
     /**
