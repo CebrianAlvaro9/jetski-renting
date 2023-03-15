@@ -37,6 +37,8 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/jetskis', JetskiController::class);
     Route::resource('/jetskisUsers', JetskiUserController::class);
     Route::resource('/users', UserController::class);
+
+    
     // Route::resource('/menus', MenuController::class);
     // Route::resource('/tables', TableController::class);
     // Route::resource('/reservations', ReservationController::class);

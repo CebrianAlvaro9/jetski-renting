@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Jetski extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'brand',
+        'model',
+        'horse_power',
+        'year',
+        'price'
+    ];
+
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
+
 }
