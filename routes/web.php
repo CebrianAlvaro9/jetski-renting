@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\JetskiController;
 use App\Http\Controllers\Admin\JetskiUserController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\UserController as ClientUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +40,16 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/jetskisUsers', JetskiUserController::class);
     Route::resource('/users', UserController::class);
 
-    
+
+    // Route::resource('/menus', MenuController::class);
+    // Route::resource('/tables', TableController::class);
+    // Route::resource('/reservations', ReservationController::class);
+});
+
+
+Route::middleware(['auth', 'client'])->name('client.')->prefix('client')->group(function () {
+    Route::get('/', [ClientController::class, 'index'])->name('index');
+    Route::resource('/users', ClientUserController::class);
     // Route::resource('/menus', MenuController::class);
     // Route::resource('/tables', TableController::class);
     // Route::resource('/reservations', ReservationController::class);

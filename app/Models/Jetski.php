@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Jetski extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'brand',
-        'model',
-        'horse_power',
-        'year',
-        'price'
-    ];
+    
+    protected $fillable = ['brand','model','horse_power','year','price'];
+
+    public function setBrandAttribute($value)
+    {
+        $this->attributes['brand'] = ucfirst(strtolower($value));
+    }
+
+    public function getModelAttribute($value)
+
+    {
+
+    return strtoupper($value);
+    }
+
 
     public function users() {
         return $this->belongsToMany(User::class);

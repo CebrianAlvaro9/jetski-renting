@@ -20,6 +20,11 @@
                         {{ __('Admin') }}
                     </x-nav-link>
                 @endif
+                @if (!Auth::user()->is_admin)
+                <x-nav-link :href="route('client.index')" :active="request()->routeIs('client.index')">
+                    {{ __('Client') }}
+                </x-nav-link>
+            @endif
                 </div>
             </div>
 

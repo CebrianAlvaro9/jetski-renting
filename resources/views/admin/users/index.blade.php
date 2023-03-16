@@ -55,11 +55,12 @@
                                                     {{-- <a href="{{ route('admin.users.edit', $user->id) }}"
 
                                                         class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">Edit </a> --}}
+                                                        @if ($user->is_admin==0)
                                                      <a href="{{ route('admin.users.show', $user->id) }}"
 
                                                         class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">ver </a> 
-
-                                                    <form
+                                                       
+                                                    {{-- <form
                                                         class="px-4 py-2 bg-red-500 hover:bg-red-300 rounded-lg text-white"
                                                         method="POST"
                                                         action="{{ route('admin.users.destroy', $user->id) }}"
@@ -67,7 +68,8 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit">Delete</button>
-                                                    </form>
+                                                    </form> --}}
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>
