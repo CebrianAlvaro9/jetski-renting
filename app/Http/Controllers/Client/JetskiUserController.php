@@ -8,7 +8,13 @@ use App\Models\JetskiUser;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+
+
+//FALTA PONER REQUEST DE NO SE PUEDE PONER FECHAS INFERIORES A LA DEL DIA SIGUIENTE  
+// QUE SE ENVIE EL PRECIO DE LA MOTO DE AGUA DE STIRPE CREANDO LA COLUMNA NUEVA CON ELLO
 
 class JetskiUserController extends Controller
 {
@@ -22,6 +28,8 @@ class JetskiUserController extends Controller
     }
 
     public function disponibilidad(Request $request){
+        session()->forget('fecha');
+        session()->forget('jetski_id');
 
     $hora= $request->input("hora");
     $mifecha= $request->input("fecha");
@@ -47,10 +55,14 @@ class JetskiUserController extends Controller
         ->whereNotIn('id', $resultados)
         ->get();
 
+      
 
-        session(['date_in' =>  $NuevaFecha]);
+        session(['fecha' => $NuevaFecha]);
        
-
+    
+      
+       
+ 
         return view('client.rent.jetski-check',compact('motoslibres'));
     }
 
@@ -58,20 +70,51 @@ class JetskiUserController extends Controller
 
         $jetski_id= $request->input("id");
 
-        session(['jetski_id' =>  $jetski_id]);
+        session(['jetski_id' => $jetski_id]);
+
+        //mandar el precio pero debe estar guardado en la base de datos
 
         return response()->redirectTo(route('pago'), Response::HTTP_FOUND);
 
     }
 
-    public function pago(){
+    public function pago(Request $request){
 
-        $p = new JetskiUser();
-        $p->jetski_id=session(['jetski_id']);
+   
+        $status = $request->query('checkout');
+
+        if ($status === 'success') {
+            // El pago se ha completado correctamente
+            // Realizar las acciones necesarias, como actualizar la base de datos
+
+            
+      $p = new JetskiUser();
+        $p->jetski_id=session('jetski_id');
+        $p->user_id=Auth::user()->id;
+        $p->date_in=session('fecha');
+        $p->date_out=session('fecha');
+        $p->total_price="20";
+        $p->save();
+        //save es un metodo eloquent
+        session()->forget('fecha');
+        session()->forget('jetski_id');
+       
+        } else {
+
+            // El pago ha fallado o se ha cancelado
+        
+
+        }
+
+
+      
+
+        // $p = new JetskiUser();
+        // $p->jetski_id=session(['jetski_id']);
     
-        $p->save();//save es un metodo eloquent
+        // $p->save();//save es un metodo eloquent
 
-        session(['jetski_id']);
+        // session(['jetski_id']);
 
         return view('client.index');
 
