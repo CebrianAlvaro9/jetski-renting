@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\JetskiController;
 use App\Http\Controllers\Admin\JetskiUserController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\JetskiUserController as ClientJetskiUserController;
 use App\Http\Controllers\Client\UserController as ClientUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -43,19 +44,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/billing-portal', function (Request $request) {
         return $request->user()->redirectToBillingPortal();
     });
-    Route::get('/pago3', function (Request $request) {
-        return $request->user()
-            ->newSubscription('default', 'price_monthly')
-            ->checkout();
-    });
-     
-    Route::get('/pago2', function (Request $request) {
-    return $request->user()->checkoutCharge(1200, 'T-Shirt', 5);
-    });
+   
     Route::get('/pago', function (Request $request) {
         return $request->user()->checkout(config('stripe.price_id'));
-    });
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    })->name('pago');
+
+
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/home', [ClientJetskiUserController::class, 'pago'])->name('home');
+    Route::get('/disponibilidad', [ClientJetskiUserController::class, 'index'])->name('disponibilidad');
+    Route::post('/disponibilidad-moto', [ClientJetskiUserController::class, 'disponibilidad'])->name('disponibilidad-moto');
+    Route::post('/seleccion-moto', [ClientJetskiUserController::class, 'seleccion'])->name('seleccion-moto');
 });
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
@@ -63,6 +63,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/jetskis', JetskiController::class);
     Route::resource('/jetskisUsers', JetskiUserController::class);
     Route::resource('/users', UserController::class);
+
     // Route::resource('/menus', MenuController::class);
     // Route::resource('/tables', TableController::class);
     // Route::resource('/reservations', ReservationController::class);
