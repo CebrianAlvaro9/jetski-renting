@@ -6,9 +6,10 @@ use App\Http\Controllers\Admin\JetskiUserController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Client\UserController as ClientUserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+/*PAGOS*/
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,6 +39,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/billing-portal', function (Request $request) {
+        return $request->user()->redirectToBillingPortal();
+    });
+    Route::get('/pago3', function (Request $request) {
+        return $request->user()
+            ->newSubscription('default', 'price_monthly')
+            ->checkout();
+    });
+     
+    Route::get('/pago2', function (Request $request) {
+    return $request->user()->checkoutCharge(1200, 'T-Shirt', 5);
+    });
+    Route::get('/pago', function (Request $request) {
+        return $request->user()->checkout(config('stripe.price_id'));
+    });
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
@@ -39,8 +63,6 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/jetskis', JetskiController::class);
     Route::resource('/jetskisUsers', JetskiUserController::class);
     Route::resource('/users', UserController::class);
-
-
     // Route::resource('/menus', MenuController::class);
     // Route::resource('/tables', TableController::class);
     // Route::resource('/reservations', ReservationController::class);
