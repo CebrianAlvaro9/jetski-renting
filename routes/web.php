@@ -45,8 +45,13 @@ Route::middleware('auth')->group(function () {
         return $request->user()->redirectToBillingPortal();
     });
    
+    // Route::get('/pago/{price_id}', function (Request $request,$price_id) {
+    //     return $request->user()->checkout($price_id);
+    // })->name('pago');
+
     Route::get('/pago', function (Request $request) {
-        return $request->user()->checkout(config('stripe.price_id'));
+        $price_id = $request->query('price_id');
+        return $request->user()->checkout($price_id);
     })->name('pago');
 
 
@@ -56,14 +61,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/disponibilidad', [ClientJetskiUserController::class, 'index'])->name('disponibilidad');
     Route::post('/disponibilidad-moto', [ClientJetskiUserController::class, 'disponibilidad'])->name('disponibilidad-moto');
     Route::post('/seleccion-moto', [ClientJetskiUserController::class, 'seleccion'])->name('seleccion-moto');
+
+    
 });
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
+
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/jetskis', JetskiController::class);
     Route::resource('/jetskisUsers', JetskiUserController::class);
     Route::resource('/users', UserController::class);
+    Route::post('/prueba', [UserController::class, 'prueba'])->name('prueba');
+    Route::post('/cambio-fecha/{id}', [JetskiUserController::class, 'cambio'])->name('cambio-fecha');
+    Route::get('/modificar/{id}', [JetskiUserController::class, 'modificar'])->name('modificar');
 
+    Route::post('/disponibilidad-admin', [JetskiUserController::class, 'disponibilidad'])->name('disponibilidad-admin');
     // Route::resource('/menus', MenuController::class);
     // Route::resource('/tables', TableController::class);
     // Route::resource('/reservations', ReservationController::class);
@@ -73,6 +85,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
 Route::middleware(['auth', 'client'])->name('client.')->prefix('client')->group(function () {
     Route::get('/', [ClientController::class, 'index'])->name('index');
     Route::resource('/users', ClientUserController::class);
+    Route::resource('/jetskisUsers', ClientJetskiUserController::class);
     // Route::resource('/menus', MenuController::class);
     // Route::resource('/tables', TableController::class);
     // Route::resource('/reservations', ReservationController::class);

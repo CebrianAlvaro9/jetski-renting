@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("horse_power");
             $table->string("year");
             $table->float("price");
+            $table->string("price_id");
             $table->timestamps();
         });
     }

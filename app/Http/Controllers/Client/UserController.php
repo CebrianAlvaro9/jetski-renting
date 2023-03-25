@@ -21,12 +21,13 @@ class UserController extends Controller
 
         //querie para sacar todo lo relacionado con el alquiler que ha realizado
 
+      
         $rents = DB::table('jetski_user')
             ->join('users', 'users.id', '=', 'jetski_user.user_id')
             ->join('jetskis', 'jetskis.id', '=', 'jetski_user.jetski_id')
-            ->select('*')
             ->where('user_id', '=', $id)
-            ->get();
+            ->get(['jetski_user.id', 'jetski_user.date_in','jetski_user.date_out',  'users.name', 'jetskis.brand','jetskis.model','jetski_user.total_price']);
+
 
             $intervals= array();
         foreach ($rents as $rent) {

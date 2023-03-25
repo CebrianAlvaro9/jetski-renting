@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
 
+   @if (session('exito'))
+    <div class="alert alert-success">
+        {{ session('exito') }}
+    </div>
+    @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-pink-800">
@@ -154,6 +159,26 @@
 
                                                     {{ $rent->total_price }} €
                                                 </td>
+                                                @if(strtotime($rent->date_in) > time())
+                                    <td
+                                        class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex space-x-2">
+                                            <a href={{ route('client.jetskisUsers.edit', $rent->id) }}
+                                               
+                                                class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">Edit </a>
+
+                                            <form
+                                                class="px-4 py-2 bg-red-500 hover:bg-red-300 rounded-lg text-white"
+                                                method="POST"
+                                                action="{{ route('client.jetskisUsers.destroy', $rent->id) }}"
+                                                onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    @endif
 
 
 

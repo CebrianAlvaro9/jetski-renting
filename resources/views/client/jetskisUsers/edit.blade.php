@@ -18,9 +18,10 @@
                             </div>
 
                             {{-- <form method="POST" action="{{ route('reservations.store.step.one') }}"> --}}
-                            <form method="POST" action="{{ route('disponibilidad-moto') }}">
+                            <form method="POST" action="{{ route('client.jetskisUsers.update',['jetskisUser'=>$jetskisUser->id]) }}">
                                 @csrf
-
+                                @method("PUT")
+                                    <p>{{$jetskisUser->id}}</p>
                                 <div class="sm:col-span-6">
                                     <label for="res_date" class="block text-sm font-medium text-gray-700"> 
                                     </label>

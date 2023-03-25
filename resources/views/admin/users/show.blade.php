@@ -104,6 +104,7 @@
                             <table class="min-w-full">
                                 <thead class="bg-gray-50 dark:bg-gray-700">
                                     <tr>
+                              
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                        fecha
@@ -133,6 +134,7 @@
                                     @foreach($rents as $key=> $rent )
                                     
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                      
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                
@@ -158,7 +160,26 @@
 
                                         {{$rent->total_price}} €
                                     </td>
-                                      
+                                    @if(strtotime($rent->date_in) > time())
+                                    <td
+                                        class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div class="flex space-x-2">
+                                            <a href={{ route('admin.jetskisUsers.edit', $rent->id) }}
+                                               
+                                                class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">Edit </a>
+
+                                            <form
+                                                class="px-4 py-2 bg-red-500 hover:bg-red-300 rounded-lg text-white"
+                                                method="POST"
+                                                action="{{ route('admin.jetskisUsers.destroy', $rent->id) }}"
+                                                onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    @endif
                                           
                                    
                                         </tr>

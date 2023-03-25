@@ -1,4 +1,4 @@
-<x-client-layout>
+<x-admin-layout>
     <div class="container w-full px-5 py-6 mx-auto">
         <div class="flex items-center min-h-screen bg-gray-50">
             <div class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
@@ -18,9 +18,10 @@
                             </div>
 
                             {{-- <form method="POST" action="{{ route('reservations.store.step.one') }}"> --}}
-                            <form method="POST" action="{{ route('disponibilidad-moto') }}">
+                            <form method="POST" action="{{ route('admin.jetskisUsers.update',['jetskisUser'=>$jetskisUser->id]) }}">
                                 @csrf
-
+                                @method("PUT")
+                                    <p>{{$jetskisUser->id}}</p>
                                 <div class="sm:col-span-6">
                                     <label for="res_date" class="block text-sm font-medium text-gray-700"> 
                                     </label>
@@ -60,4 +61,4 @@
         </div>
 
     </div>
-</x-client-layout>
+</x-admin-layout>

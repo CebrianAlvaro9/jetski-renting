@@ -16,6 +16,8 @@
                     <span class="text-xl text-green-600">{{ $moto->price }}$</span>
                 </div>
                 <input type=hidden name="id" value="{{ $moto->id }}" >
+                <input type="hidden" name="price_id" value="{{ $moto->price_id }}" >
+                <input type="hidden" name="price" value="{{ $moto->price }}" >
                 <div class="mt-6 p-4 flex ">
                     <button type="submit"
                         class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">Next</button>
