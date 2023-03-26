@@ -9,7 +9,7 @@ class Jetski extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['brand','model','horse_power','year','price'];
+    protected $fillable = ['brand','model','horse_power','year','price','price_id'];
 
     public function setBrandAttribute($value)
     {

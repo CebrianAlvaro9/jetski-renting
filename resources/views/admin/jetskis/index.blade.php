@@ -4,6 +4,11 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    @if (session('exito'))
+    <div class="alert alert-success">
+        {{ session('exito') }}
+    </div>
+    @endif
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -11,6 +16,7 @@
                 <a href="{{ route('admin.jetskis.create') }}"
                     class="px-4 py-2 border black bg-indigo-500 hover:bg-indigo-700 rounded-lg text-black">añadir moto de agua</a>
             </div>
+            
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">

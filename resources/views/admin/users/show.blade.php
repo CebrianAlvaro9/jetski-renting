@@ -158,7 +158,7 @@
                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{-- {{ $rent->interval }} --}}
 
-                                        {{$rent->total_price}} €
+                                        {{$rent->price}} €
                                     </td>
                                     @if(strtotime($rent->date_in) > time())
                                     <td

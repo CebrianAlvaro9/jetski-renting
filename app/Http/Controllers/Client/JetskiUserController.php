@@ -169,9 +169,6 @@ class JetskiUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-
-      
 
         $fecha_minima = Carbon::now()->addDay()->format('Y-m-d');
         $fecha_maxima = Carbon::now()->addMonth()->format('Y-m-d');

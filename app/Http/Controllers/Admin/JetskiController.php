@@ -125,6 +125,8 @@ class JetskiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $p= Jetski::find($id);
+        $p->delete();
+        return redirect()->action([JetskiController::class, 'index'])->with('exito','Moto borrada correctamente');
     }
 }

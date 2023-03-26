@@ -51,7 +51,7 @@ class UserController extends Controller
             ->join('users', 'users.id', '=', 'jetski_user.user_id')
             ->join('jetskis', 'jetskis.id', '=', 'jetski_user.jetski_id')
             ->where('user_id', '=', $id)
-            ->get(['jetski_user.id', 'jetski_user.date_in','jetski_user.date_out',  'users.name', 'jetskis.brand','jetskis.model','jetski_user.total_price']);
+            ->get(['jetski_user.id', 'jetski_user.date_in','jetski_user.date_out',  'users.name', 'jetskis.brand','jetskis.model','jetskis.price']);
 
             $intervals= array();
             
