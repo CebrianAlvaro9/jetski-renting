@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class JetskiUser extends Model
 {
     use HasFactory;
+
     protected $fillable=["user_id","jetski_id","date_in","date_out","total_price"];
     protected $table='jetski_user';
 
@@ -25,6 +26,12 @@ class JetskiUser extends Model
 
     
 // }
+
+public function cancellations()
+{
+    return $this->hasMany(Cancellation::class);
+}
+
 
 public function getModelAttribute($value)
 

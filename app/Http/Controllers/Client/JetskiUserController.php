@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cancellation;
 use App\Models\Jetski;
 use App\Models\JetskiUser;
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
-
+use PhpParser\Node\Expr\New_;
 
 //FALTA PONER REQUEST DE NO SE PUEDE PONER FECHAS INFERIORES A LA DEL DIA SIGUIENTE  
 // QUE SE ENVIE EL PRECIO DE LA MOTO DE AGUA DE STIRPE CREANDO LA COLUMNA NUEVA CON ELLO
@@ -32,7 +33,11 @@ class JetskiUserController extends Controller
 
         session()->forget('fecha');
         session()->forget('jetski_id');
+        session()->forget('price');
+        session()->forget('price_id');
 
+
+      
         $fecha_minima = Carbon::now()->addDay()->format('Y-m-d');
         $fecha_maxima = Carbon::now()->addMonth()->format('Y-m-d');
 
@@ -88,16 +93,17 @@ class JetskiUserController extends Controller
 
     public function seleccion(Request $request)
     {
+        $id_moto_seleccionada = $request->input('moto_seleccionada');
 
-        $jetski_id = $request->input("id");
-        $price = $request->input("price");
-        $price_id = $request->input("price_id");
+        $moto_seleccionada= Jetski::find($id_moto_seleccionada);
+        
 
-        session(['jetski_id' => $jetski_id]);
-        session(['price' => $price]);
-        session(['price_id' => $price_id]);
 
-        $url = route('pago').'?price_id='.$price_id;
+        session(['jetski_id' => $moto_seleccionada->id]);
+        session(['price' => $moto_seleccionada->price]);
+        session(['price_id' => $moto_seleccionada->price_id]);
+
+        $url = route('pago').'?price_id='.$moto_seleccionada->price_id;
 
 
 
@@ -222,4 +228,49 @@ class JetskiUserController extends Controller
         return redirect()->route('client.users.show', Auth::user()->id)->with('exito','Reserva actualizada correctamente');
 
     }
+
+    public function cancellation(Request $request, string $id)
+    {
+
+  
+        $infoalquiler = JetskiUser::find($id);
+
+   
+
+        $infocliente= User::find($infoalquiler->user_id);
+
+
+        $request->validate(
+            [
+                'reason' => "required",
+               
+            ],
+            [
+                'reason.required' => 'Es importante para nostros saber la razon para poder seguir mejorando',
+           
+            ]
+        );
+
+        $p= new Cancellation();
+        $p->user_id=$infoalquiler->id;
+        $p->name=$infocliente->name;
+        $p->email=$infocliente->email;
+        $p->reason=$request->input("reason");
+        $p->purchase_date=$infoalquiler->created_at;
+        $p->price=$infoalquiler->total_price;
+        $p->save();//save es un metodo eloquent
+
+        $infoalquiler->delete();
+        
+     
+       
+
+    
+
+        return redirect()->route('client.users.show', Auth::user()->id)->with('exito','Reserva eliminada correctamente');
+
+    }
+
+ 
+
 }
