@@ -1,4 +1,7 @@
-<x-guest-layout>
+@extends('layouts.guest')
+    <!-- Session Status -->
+    @section('content')
+    <div class="py-20 pb-20 container mx-auto">
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
@@ -36,4 +39,6 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</div>
+
+@endsection

@@ -13,9 +13,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Inicio') }}
                     </x-nav-link>
-                    @if (Auth::user()->is_admin)
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Nuestras motos') }}
+                    </x-nav-link>
+                    {{-- @if (Auth::user()->is_admin)
                     <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                         {{ __('Admin') }}
                     </x-nav-link>
@@ -24,7 +27,7 @@
                 <x-nav-link :href="route('client.index')" :active="request()->routeIs('client.index')">
                     {{ __('Client') }}
                 </x-nav-link>
-            @endif
+            @endif --}}
                 </div>
             </div>
 
@@ -44,10 +47,21 @@
                     </x-slot>
 
                     <x-slot name="content">
+
+ @if (Auth::user()->is_admin)
+ <x-dropdown-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                        {{ __('Gestión') }}
+                    </x-dropdown-link>
+                @endif
+                @if (!Auth::user()->is_admin)
+                <x-dropdown-link :href="route('client.index')" :active="request()->routeIs('client.index')">
+                    {{ __('Reservas') }}
+                </x-dropdown-link>
+            @endif
+                     
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

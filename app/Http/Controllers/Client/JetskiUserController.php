@@ -28,13 +28,12 @@ class JetskiUserController extends Controller
         return view('client.rent.date-check', compact('horario'));
     }
 
+ 
+
     public function disponibilidad(Request $request)
     {
 
-        session()->forget('fecha');
-        session()->forget('jetski_id');
-        session()->forget('price');
-        session()->forget('price_id');
+     session()->forget(['fecha', 'jetski_id', 'price', 'price_id']);
 
 
       
@@ -63,8 +62,6 @@ class JetskiUserController extends Controller
         //$NuevaFecha = strtotime ( '+18 minute' , $NuevaFecha ) ; 
         $NuevaFecha = date('Y-m-d H:i:s', $NuevaFecha);
 
-
-
         //de esta forma podemos coger todas las reservas que hay para esa fecha y hora y mostrar solo las motos disponibles
 
         $motos = DB::table('jetskis')->pluck('id')->toArray();
@@ -79,9 +76,6 @@ class JetskiUserController extends Controller
         $motoslibres = DB::table('jetskis')
             ->whereNotIn('id', $resultados)
             ->get();
-
-
-
         session(['fecha' => $NuevaFecha]);
 
 
@@ -96,9 +90,7 @@ class JetskiUserController extends Controller
         $id_moto_seleccionada = $request->input('moto_seleccionada');
 
         $moto_seleccionada= Jetski::find($id_moto_seleccionada);
-        
-
-
+    
         session(['jetski_id' => $moto_seleccionada->id]);
         session(['price' => $moto_seleccionada->price]);
         session(['price_id' => $moto_seleccionada->price_id]);
@@ -139,10 +131,6 @@ class JetskiUserController extends Controller
 
 
         }
-
-
-
-
         // $p = new JetskiUser();
         // $p->jetski_id=session(['jetski_id']);
 

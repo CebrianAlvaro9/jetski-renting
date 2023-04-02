@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Client\JetskiUserController as ClientJetskiUserController;
 use App\Http\Controllers\Client\UserController as ClientUserController;
+use App\Http\Controllers\Frontend\Welcome;
+use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Cancellation;
@@ -33,6 +35,8 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/welcome', WelcomeController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,4 +1,7 @@
-<x-guest-layout>
+@extends('layouts.guest')
+    <!-- Session Status -->
+    @section('content')
+    <div class="py-20 pb-20 container mx-auto">
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
@@ -24,4 +27,6 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</div>
+
+@endsection
