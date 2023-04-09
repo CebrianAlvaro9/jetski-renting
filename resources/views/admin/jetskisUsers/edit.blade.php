@@ -1,3 +1,7 @@
+@extends('layouts.guest')
+
+@section('content')
+
 <x-admin-layout>
     <div class="container w-full px-5 py-6 mx-auto">
         <div class="flex items-center min-h-screen bg-gray-50">
@@ -62,3 +66,4 @@
 
     </div>
 </x-admin-layout>
+@endsection

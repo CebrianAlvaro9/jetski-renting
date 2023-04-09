@@ -1,3 +1,7 @@
+
+@extends('layouts.guest')
+
+@section('content')
 <x-admin-layout>
 
     <x-slot name="header">
@@ -198,3 +202,4 @@
         </div>
     </div>
 </x-admin-layout>
+@endsection

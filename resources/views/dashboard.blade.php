@@ -1,4 +1,8 @@
-<x-app-layout>
+@extends('layouts.guest')
+
+@section('content')
+
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -14,4 +18,9 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+    <div class="py-12">
+        <h1>Bienvenido {{Auth::user()->name}}</h1>
+        <h1>Explicacion funcionalidades</h1>
+        <p>Desde aqui podras realizar tus reservas ver tus antiguas etc etctect</p>
+    </div>
+@endsection

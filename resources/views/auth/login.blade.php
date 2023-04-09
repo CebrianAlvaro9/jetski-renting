@@ -47,6 +47,8 @@
                 </x-primary-button>
             </div>
         </form>
+<h2>Si todavia no eres miembro unete aqui</h2>
+        <a type="button" href="{{ route('register') }}" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">Register</a>
       </div>
 
 

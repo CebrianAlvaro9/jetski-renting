@@ -1,4 +1,9 @@
-<x-client-layout>
+@extends('layouts.guest')
+
+@section('content')
+
+
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -187,4 +192,5 @@
 
     </div>
     </div>
-</x-client-layout>
+
+@endsection
