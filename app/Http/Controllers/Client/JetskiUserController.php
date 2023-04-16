@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Cancel;
+use App\Mail\Rent;
+use App\Mail\UpdateRent;
 use App\Models\Cancellation;
 use App\Models\Jetski;
 use App\Models\JetskiUser;
@@ -13,6 +16,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Expr\New_;
 
 //FALTA PONER REQUEST DE NO SE PUEDE PONER FECHAS INFERIORES A LA DEL DIA SIGUIENTE  
@@ -123,6 +127,10 @@ class JetskiUserController extends Controller
             $p->total_price = session('price');
             $p->save();
             //save es un metodo eloquent
+           $jetski= Jetski::find(session('jetski_id'));
+
+
+            Mail::to(Auth::user())->send(new Rent(session('price'),session('fecha'),$jetski->brand,$jetski->model,));
             session()->forget('fecha');
             session()->forget('jetski_id');
         } else {
@@ -211,7 +219,9 @@ class JetskiUserController extends Controller
             'date_out' => date('Y-m-d H:i:s', strtotime('+1 hour', strtotime($NuevaFecha)))
         ]);
 
+        $jetski= Jetski::find($id_moto);
     
+        Mail::to(Auth::user())->send(new UpdateRent ($jetski[0]->price,$NuevaFecha,$jetski[0]->brand,$jetski[0]->model));
 
         return redirect()->route('client.users.show', Auth::user()->id)->with('exito','Reserva actualizada correctamente');
 
@@ -252,7 +262,7 @@ class JetskiUserController extends Controller
         
      
        
-
+        Mail::to(Auth::user())->send(new Cancel ($infoalquiler->total_price));
     
 
         return redirect()->route('client.users.show', Auth::user()->id)->with('exito','Reserva eliminada correctamente');

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\JetskiUser;
 use App\Models\User;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +19,7 @@ class UserController extends Controller
     {
 
 
-        
+ 
         $user = User::find($id);
 
         //querie para sacar todo lo relacionado con el alquiler que ha realizado
