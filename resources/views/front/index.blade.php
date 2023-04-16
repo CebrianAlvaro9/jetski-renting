@@ -2,63 +2,106 @@
 
 @section('content')
 
-
-<div class="relative overflow-hidden bg-gray-900">
-    
-
-    <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" style="background-image:url('{{ asset('images/banner.jpg') }}') ">
-        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Alquiler de Motos de Agua</h1>
-            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
-            <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                    Get started
-                    <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
-                <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                    Learn more
-                </a>  
-            </div>
-        </div>
-    </section>
-    
-    
-</div>
-
-    <div class="py-20 pb-30 container mx-auto my-8 px-4">
-
-        
-        <h1 class="text-3xl font-bold text-center mb-4">Alquiler de Motos de Agua</h1>
-      
-        <div class="flex flex-col md:flex-row">
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-            <img src="{{ asset('images/home.jpg') }}"  alt="Moto de agua" class="rounded-lg shadow-lg">
-          </div>
-          <div class="w-full md:w-1/2 lg:w-2/3 px-4 mb-8">
-            <p class="text-gray-700 text-lg leading-relaxed">
-              ¡Bienvenido a nuestro sitio de alquiler de motos de agua! En nuestra empresa, ofrecemos una amplia variedad de motos de agua modernas y seguras para que disfrutes al máximo de tu tiempo en el agua. Ya sea que quieras explorar la costa, hacer deportes acuáticos o simplemente relajarte, tenemos la moto de agua perfecta para ti.
-            </p>
-            <p class="text-gray-700 text-lg leading-relaxed mt-4">
-              Nuestras motos de agua están disponibles para alquiler por hora, día o semana, y ofrecemos tarifas competitivas para adaptarnos a cualquier presupuesto. Además, nuestro equipo de expertos en deportes acuáticos estará encantado de proporcionarte todo el equipo que necesites, así como consejos útiles para que disfrutes al máximo de tu experiencia.
-            </p>
-            <a href="#" class="inline-block mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Reserva ahora</a>
-          </div>
-        </div>
-      
-        <div class="flex flex-col md:flex-row">
-          <div class="w-full md:w-1/2 lg:w-2/3 px-4 mb-8">
-            <p class="text-gray-700 text-lg leading-relaxed">
-              En nuestra flota de motos de agua, contamos con modelos de las mejores marcas del mercado, equipados con las últimas tecnologías en seguridad y confort. Además, nuestro equipo de mantenimiento se encarga de que cada moto esté en perfectas condiciones antes y después de cada alquiler.
-            </p>
-            <p class="text-gray-700 text-lg leading-relaxed mt-4">
-              No importa si eres un principiante o un experto en motos de agua, nuestro equipo estará encantado de ayudarte en todo lo que necesites para que disfrutes al máximo de tu experiencia. ¡No dudes en contactar con nosotros para obtener más información o hacer tu reserva!
-            </p>
-          </div>
-          <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-            <img src="{{ asset('images/home1.jpg') }}" alt="Moto de agua" class="rounded-lg shadow-lg">
-          </div>
-        </div>
+<section class="bg-white py-3">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8  ">
+    <div class="text-center">
+    <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Nuestras gam</span>as de precio</h1>
+    <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">En Waveriders queremos ofrecer la oportunidad de vivir la expericiencia a todo tipo de personas por lo que nuestros precios se adaptan a todos los bolsillos</p>
     </div>
-      
+ 
+    <div id="all" class="flex flex-col md:flex-row my-9 ">
+
+      <div class="w-full md:w-1/3"><div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+        <a href="#">
+            <img class="rounded-t-lg" src="/images/entrada.png" alt="" />
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Para todo el mundo</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Esta gama es la más accesible te permite introducirte en el mundo de las motos de agua y disfrutar una experiencia increible</p>
+            <span class="text-3xl font-bold text-gray-900 dark:text-white">80 €</span>
+            <br>
+            <a href="#" id="entrada" class="my-2  inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Más info
+                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+        </div>
+     
+      </div></div>
+      <div class="w-full md:w-1/3"><div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+            <img class="rounded-t-lg" src="/images/estandar.png" alt="" />
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Para expertos </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Esta gama te permite disfrutar de motos de una grandisima calidad y adaptación a cualquier situación</p>
+            <span class="text-3xl font-bold text-gray-900 dark:text-white ">100 €</span>
+            <br>
+            <a id="estandar" class=" my-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Más info
+                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+        </div>
+      </div></div>
+      <div class="w-full md:w-1/3"><div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+        <a href="#">
+            <img class="rounded-t-lg" src="/images/premium.png" alt="" />
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Lo más radical</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">El nombre lo dice todo te permitimos disfrutar de motos de competición de más de 200cv (obligatorio carnet)</p>
+            <span class="text-3xl font-bold text-gray-900 dark:text-white">120 €</span>
+            <br>
+        
+
+            <a href="#" id="premium" class=" my-2  inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Más info
+                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+        </div>
+      </div></div>
+    
+
+
+    </div>
+    
+    
+    
+
+  
+  
+
+
+  
+  
+
+</section>
+
+<script>
+  $(document).ready(function () {
+
+   info();
+
+  });
+
+ function info(){
+
+  $(document).ready(function() {
+  $("a").click(function(event) {
+    // Obtenemos el id del elemento clicado
+    var idElemento = $(event.target).attr("id");
+    console.log("El elemento clicado tiene el id: " + idElemento);
+  });
+
+});
+ }
+</script>
+
       
 @endsection
+

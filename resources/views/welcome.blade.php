@@ -9,14 +9,14 @@
     <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" style="background-image:url('{{ asset('images/banner.jpg') }}') ">
         <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Alquiler de Motos de Agua</h1>
-            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Disfruta de la emoción de conducir una moto de agua en el mar. Ofrecemos alquiler de motos de agua con los mejores precios y equipos de alta calidad. ¡Reserva ahora y vive una experiencia inolvidable en el agua!</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <a href="disponibilidad" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                    Get started
+                    Alquila ahora
                     <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </a>
-                <a href="" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                    Learn more
+                <a href="#info" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                    Info
                 </a> 
               
             </div>
@@ -26,10 +26,10 @@
     
 </div>
 
-    <div class="py-20 pb-30 container mx-auto my-8 px-4">
+    <div id="info" class="py-20 pb-30 container mx-auto my-8 px-4">
 
         
-        <h1 class="text-3xl font-bold text-center mb-4">Alquiler de Motos de Agua</h1>
+        <h1  class="text-3xl font-bold text-center mb-4">Alquiler de Motos de Agua</h1>
       
         <div class="flex flex-col md:flex-row">
           <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
@@ -42,7 +42,7 @@
             <p class="text-gray-700 text-lg leading-relaxed mt-4">
               Nuestras motos de agua están disponibles para alquiler por hora, día o semana, y ofrecemos tarifas competitivas para adaptarnos a cualquier presupuesto. Además, nuestro equipo de expertos en deportes acuáticos estará encantado de proporcionarte todo el equipo que necesites, así como consejos útiles para que disfrutes al máximo de tu experiencia.
             </p>
-            <a href="#" class="inline-block mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Reserva ahora</a>
+            <a href="disponibilidad"class="inline-block mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Reserva ahora</a>
           </div>
         </div>
       
