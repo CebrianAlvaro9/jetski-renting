@@ -2,12 +2,16 @@
     <!-- Session Status -->
     @section('content')
 
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-    <div class="py-20 pb-20 container mx-auto">
-      
-          <form method="POST" action="{{ route('login') }}">
-            @csrf
     
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <section style="background-image:url('{{ asset('images/login.jpg') }}')" class="bg-center bg-no-repeat bg-gray-200 bg-blend-multiply py-3 items-center justify-center xl:mb-40 mt-3">
+        <div  class="flex justify-center max-w-screen-xl mx-auto  px-4 sm:px-6 lg:px-8  ">
+    <div class=" w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    
+      
+          <form class="space-y- mb-3" method="POST" action="{{ route('login') }}">
+            @csrf
+            <h5 class="text-xl font-medium text-gray-900 dark:text-white mb-2">Inicia sesión</h5>
             <!-- Email Address -->
             <div>
                 <x-input-label for="email" :value="__('Email')" />
@@ -47,12 +51,14 @@
                 </x-primary-button>
             </div>
         </form>
-<h2>Si todavia no eres miembro unete aqui</h2>
-        <a type="button" href="{{ route('register') }}" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">Register</a>
-      </div>
+
+        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+            Si todavia no eres miembro unete aqui: <br><a  href="{{ route('register') }}" class="text-blue-700 hover:underline dark:text-blue-500">Crear cuenta</a>
+        </div>
+
 
      
-    
-
-  
+    </div>
+</div>
+</div>
 @endsection

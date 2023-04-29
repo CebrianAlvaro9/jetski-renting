@@ -27,4 +27,10 @@ class WelcomeController extends Controller
 
         return view('front.index',['entrada' => $entrada, 'estandar' => $estandar,'premium'=>$premium]);
     }
+
+    public function contact(){
+
+
+        return view('front.contact');
+    }
 }

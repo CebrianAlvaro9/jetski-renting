@@ -1,9 +1,13 @@
 @extends('layouts.guest')
     <!-- Session Status -->
     @section('content')
-    <div class="py-20 pb-20 container mx-auto">
+    <section style="background-image:url('{{ asset('images/login.jpg') }}')" class="bg-center bg-no-repeat bg-gray-200 bg-blend-multiply py-3 items-center justify-center xl:mb-40 mt-3 xl:h-96">
+        <div  class="flex justify-center max-w-screen-xl mx-auto  px-4 sm:px-6 lg:px-8  ">
+    <div class="mt-4 w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    
+      
     <div class=" mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        {{ __('Has olvidado tu contraseña? Dejanos tu correo para poder enviarte la información para pioder recuperarla') }}
     </div>
 
     <!-- Session Status -->
@@ -27,4 +31,7 @@
     </form>
 
 </div>
+</div>
+</div>
+    </section>
 @endsection
