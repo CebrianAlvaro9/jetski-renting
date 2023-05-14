@@ -17,7 +17,7 @@ class JetskiUserController extends Controller
     {
         //
 
-        $rents = JetskiUser::all();
+        $rents = DB::table('jetski_user')->paginate(10);
  
         return view('admin.jetskisUsers.index',compact('rents'));
     }

@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         //
 
-        $users = User::all();
+        $users =DB::table('users')->paginate(10);
         return view('admin.users.index', compact('users'));
     }
 
@@ -51,10 +51,11 @@ class UserController extends Controller
             ->join('users', 'users.id', '=', 'jetski_user.user_id')
             ->join('jetskis', 'jetskis.id', '=', 'jetski_user.jetski_id')
             ->where('user_id', '=', $id)
-            ->get(['jetski_user.id', 'jetski_user.date_in','jetski_user.date_out',  'users.name', 'jetskis.brand','jetskis.model','jetskis.price']);
+            ->select(['jetski_user.id', 'jetski_user.date_in','jetski_user.date_out',  'users.name', 'jetskis.brand','jetskis.model','jetskis.price'])
+            ->paginate(5);
 
             $intervals= array();
-            
+        
         foreach ($rents as $rent) {
 
             $horaInicio = new DateTime($rent->date_in);
@@ -66,6 +67,8 @@ class UserController extends Controller
   
           
         }
+
+       
 
  
 
@@ -96,8 +99,5 @@ class UserController extends Controller
         //
     }
 
-    public function prueba()
-    {
-        dd("hola");
-    }
+ 
 }

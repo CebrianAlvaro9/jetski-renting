@@ -7,17 +7,19 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    @if (session('exito'))
-    <div class="alert alert-success">
-        {{ session('exito') }}
-    </div>
-    @endif
+ 
 
-    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if (session('exito'))
+
+            <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+                <span class="font-medium">Info alerta!</span>  {{ session('exito') }}
+              </div>
+          
+            @endif
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('admin.jetskis.create') }}"
-                    class="px-4 py-2 border black bg-indigo-500 hover:bg-indigo-700 rounded-lg text-black">añadir moto de agua</a>
+                    class="px-4 py-2 border border-indigo-700 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white">añadir moto de agua</a>
             </div>
             
             <div class="flex flex-col">
@@ -80,17 +82,19 @@
                                                 <div class="flex space-x-2">
                                                     <a href="{{ route('admin.jetskis.edit', $jetski->id) }}"
 
-                                                        class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">Edit </a>
+                                                        class="px-4 border border-green-100 py-2 bg-green-300 hover:bg-green-400 rounded-lg text-black">Edit </a>
 
                                                     <form
                                                         class="px-4 py-2 bg-red-500 hover:bg-red-300 rounded-lg text-white"
                                                         method="POST"
                                                         action="{{ route('admin.jetskis.destroy', $jetski->id) }}"
-                                                        onsubmit="return confirm('Are you sure?');">
+                                                        onsubmit="return confirm('Estas seguro?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit">Delete</button>
                                                     </form>
+                                                 
+                                                      
                                                 </div>
                                             </td>
                                         </tr>
@@ -101,9 +105,11 @@
                         </div>
                     </div>
                 </div>
+                {{$jetskis->links()}}
             </div>
 
         </div>
     </div>
 </x-admin-layout>
 @endsection
+

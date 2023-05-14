@@ -7,6 +7,7 @@ use App\Http\Requests\JetskiRequest;
 use App\Models\Jetski;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JetskiController extends Controller
 {
@@ -16,7 +17,7 @@ class JetskiController extends Controller
     public function index()
     {
         //
-        $jetskis = Jetski::all();
+        $jetskis = DB::table('jetskis')->paginate(8);
 
         return view('admin.jetskis.index', compact('jetskis'));
     }

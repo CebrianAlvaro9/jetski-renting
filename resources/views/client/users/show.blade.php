@@ -11,14 +11,19 @@
     </x-slot>
 
     @if (session('exito'))
-        <div class="alert alert-success">
-            {{ session('exito') }}
-        </div>
-    @endif
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+                <span class="font-medium">Info alerta!</span>  {{ session('exito') }}
+              </div>
+            </div>
+            @endif
+            
+
     <div class="py-12">
+        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-pink-800">
-                Cliente {{ $user->name }}
+            <h4 class=" leading-normal mt-0 mb-2 text-3xl font-bold  text-indigo-800">
+                Cliente: {{ $user->name }}
             </h4>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -94,7 +99,7 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <br>
-            <h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-pink-800">
+            <h4 class="leading-normal mt-0 mb-2 text-3xl font-bold  text-indigo-800">
                 Alquileres realizados
             </h4>
 
@@ -169,7 +174,7 @@
                                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                         <div class="flex space-x-2">
                                                             <a href={{ route('client.jetskisUsers.edit', $rent->id) }}
-                                                                class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">Cambiar
+                                                                class="px-4 border border-green-100 py-2 bg-green-300 hover:bg-green-400 rounded-lg text-black">Cambiar
                                                                 reserva</a>
 
 
@@ -189,8 +194,10 @@
     </div>
     </div>
     </div>
+    {{$rents->links()}}
 
     </div>
     </div>
 
+    
 @endsection

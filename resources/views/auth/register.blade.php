@@ -1,7 +1,7 @@
 @extends('layouts.guest')
     <!-- Session Status -->
     @section('content')
-    <section style="background-image:url('{{ asset('images/login.jpg') }}')" class="bg-center bg-no-repeat bg-gray-200 bg-blend-multiply py-3 items-center justify-center xl:mb-40 mt-3">
+    <section style="background-image:url('{{ asset('images/jetskiCreate.jpeg') }}')" class="bg-center bg-no-repeat bg-gray-200 bg-blend-multiply py-3 items-center justify-center xl:mb-40 mt-3">
         <div  class="flex justify-center max-w-screen-xl mx-auto  px-4 sm:px-6 lg:px-8  ">
     <div class=" w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
     

@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/datepicker.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
      
 
@@ -31,7 +32,7 @@
                 @auth
                 <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                   <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+                  <img class="w-8 h-8 rounded-full" src="images/user.png" alt="user photo">
                 </button>
                 <!-- Dropdown menu -->
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -41,14 +42,18 @@
                   </div>
                   <ul class="py-2" aria-labelledby="user-menu-button">
                     @if (Auth::user()->is_admin)
-                    <x-dropdown-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                    <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                            {{ __('Gestión') }}
                                        </x-dropdown-link>
                                    @endif
                                    @if (!Auth::user()->is_admin)
+                                   <x-dropdown-link :href="route('dashboard')"
+                                   :active="request()->routeIs('dashboard')">
+                                   {{ __('Cuenta') }}
+                                  </x-dropdown-link>
                                    <x-dropdown-link :href="route('client.users.show', Auth::user()->id)"
                                     :active="request()->routeIs('client.users.show', Auth::user()->id)">
-                                    {{ __('Mi cuenta') }}
+                                    {{ __('Mis reservas') }}
                                    </x-dropdown-link>
                                @endif
                                         

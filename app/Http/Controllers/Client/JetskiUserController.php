@@ -146,7 +146,7 @@ class JetskiUserController extends Controller
 
         // session(['jetski_id']);
 
-        return view('client.index');
+        return redirect()->route('client.users.show', Auth::user()->id)->with('exito','Reserva realizada correctamente');
     }
 
     public function edit(string $id)

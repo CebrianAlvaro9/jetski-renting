@@ -38,6 +38,8 @@ Route::get('/', function () {
 
 Route::resource('/welcome', WelcomeController::class);
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

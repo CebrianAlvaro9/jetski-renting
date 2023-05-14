@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cancellation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CancellationController extends Controller
 {
@@ -13,7 +14,7 @@ class CancellationController extends Controller
      */
     public function index()
     {
-        $cancellations = Cancellation::all();
+        $cancellations = DB::table('cancellations')->paginate(10);
         return view('admin.cancellations.index', compact('cancellations'));
     }
 

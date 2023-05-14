@@ -10,11 +10,10 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-pink-800">
-               Cliente {{ $user->name }}
-              </h4>
+    <div class="max-w-7xl mt-10 mx-auto sm:px-6 lg:px-8">
+        <h4 class=" leading-normal mt-0 mb-2 text-3xl font-bold  text-indigo-800">
+            Cliente: {{ $user->name }}
+        </h4>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
@@ -91,7 +90,7 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <br>
-            <h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-pink-800">
+            <h4 class="leading-normal mt-0 mb-2 text-3xl font-bold  text-indigo-800">
                 Alquileres realizados
                </h4>
 
@@ -170,9 +169,9 @@
                                         <div class="flex space-x-2">
                                             <a href={{ route('admin.jetskisUsers.edit', $rent->id) }}
                                                
-                                                class="px-4 border border-black py-2 bg-green-300 hover:bg-green-700 rounded-lg text-black">Edit </a>
+                                                class="px-4 border border-green-100 py-2 bg-green-300 hover:bg-green-400 rounded-lg text-black">Edit </a>
 
-                                            <form
+                                            {{-- <form
                                                 class="px-4 py-2 bg-red-500 hover:bg-red-300 rounded-lg text-white"
                                                 method="POST"
                                                 action="{{ route('admin.jetskisUsers.destroy', $rent->id) }}"
@@ -180,7 +179,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit">Delete</button>
-                                            </form>
+                                            </form> --}}
                                         </div>
                                     </td>
                                     @endif
@@ -198,7 +197,7 @@
                     </div>
                 </div>
             </div>
-
+            {{$rents->links()}}
         </div>
     </div>
 </x-admin-layout>

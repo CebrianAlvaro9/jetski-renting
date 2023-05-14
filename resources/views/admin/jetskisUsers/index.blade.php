@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-
+            {{$rents->links()}}
         </div>
     </div>
 </x-admin-layout>
